@@ -12,9 +12,7 @@ const RMEME_API_URL = "https://api.rmeme.me";
 const SIXTY_SECONDS = 60000;
 const FIFTEEN_SECONDS = 15000;
 
-let replyInteraction;
-
-async function getMeme(meme_id) {
+async function getMeme(replyInteraction, meme_id) {
   const api_response = await makeApiCall(
     meme_id ? `${RMEME_API_URL}/meme/${meme_id}` : `${RMEME_API_URL}/rmeme`,
     (method = "GET"),
@@ -114,7 +112,7 @@ async function getMeme(meme_id) {
   });
 }
 
-async function uploadMeme(upload_url) {
+async function uploadMeme(replyInteraction, upload_url) {
   console.log("Uploading", upload_url);
   if (!upload_url) return;
 
@@ -149,7 +147,7 @@ async function uploadMeme(upload_url) {
   await replyInteraction.reply(interaction_body);
 }
 
-async function voteMeme(meme_id, inpt_votes) {
+async function voteMeme(replyInteraction, meme_id, inpt_votes) {
   console.log(`Voting on meme ${meme_id} with votes ${inpt_votes}`);
   if (!meme_id) return;
 
@@ -175,7 +173,7 @@ async function voteMeme(meme_id, inpt_votes) {
   await replyInteraction.reply({ embeds: [meme_embed], ephemeral: true });
 }
 
-async function deleteMeme(meme_id) {
+async function deleteMeme(replyInteraction, meme_id) {
   console.log("Deleting meme", meme_id);
 
   if (!meme_id) return;
@@ -252,8 +250,6 @@ module.exports = {
         )
     ),
   async execute(interaction) {
-    replyInteraction = interaction;
-
     const sub_command = interaction.options.getSubcommand();
 
     const meme_id = interaction.options.getNumber("id");
@@ -261,15 +257,15 @@ module.exports = {
 
     switch (sub_command) {
       case "upload":
-        return uploadMeme(upload_url);
+        return uploadMeme(interaction, upload_url);
       case "up":
-        return voteMeme(meme_id, 1);
+        return voteMeme(interaction, meme_id, 1);
       case "down":
-        return voteMeme(meme_id, -1);
+        return voteMeme(interaction, meme_id, -1);
       case "delete":
-        return deleteMeme(meme_id);
+        return deleteMeme(interaction, meme_id);
       default:
-        return getMeme(meme_id);
+        return getMeme(interaction, meme_id);
     }
   },
 };
