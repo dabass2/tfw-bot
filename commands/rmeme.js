@@ -9,8 +9,8 @@ const {
 
 const RMEME_API_URL = "https://api.rmeme.me";
 
+const TWO_MINUTES = 120000;
 const SIXTY_SECONDS = 60000;
-const FIFTEEN_SECONDS = 15000;
 
 async function getMeme(replyInteraction, meme_id) {
   const api_response = await makeApiCall(
@@ -47,8 +47,8 @@ async function getMeme(replyInteraction, meme_id) {
 
   const collector = sentMessage.createMessageComponentCollector({
     componentType: ComponentType.Button,
-    time: SIXTY_SECONDS,
-    idle: FIFTEEN_SECONDS,
+    time: TWO_MINUTES,
+    idle: SIXTY_SECONDS,
   });
 
   let totalScore = 0;
