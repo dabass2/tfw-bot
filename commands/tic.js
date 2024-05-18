@@ -96,7 +96,7 @@ module.exports = {
     } else if (sub_command === "vote") {
         const movie = ticJson.movies?.at(id);
         if (movie) {
-            movie.score += vote > 0 ? 1 : -1
+            movie.score += vote ?? 1 > 0 ? 1 : -1
         }
         fs.writeFileSync("../tic.json", JSON.stringify(ticJson));
         embed = new EmbedBuilder()
