@@ -58,7 +58,7 @@ module.exports = {
 
     const sub_command = interaction.options.getSubcommand();
 
-    const id = interaction.options.getNumber("id") ?? 1 - 1;
+    const id = interaction.options.getNumber("id") - 1;
     const vote = interaction.options.getNumber("score");
     const movieName = interaction.options.getString("name");
 
