@@ -58,7 +58,7 @@ module.exports = {
 
     const sub_command = interaction.options.getSubcommand();
 
-    const id = interaction.options.getNumber("id");
+    const id = interaction.options.getNumber("id") ?? 1 - 1;
     const vote = interaction.options.getNumber("score");
     const movieName = interaction.options.getString("name");
 
@@ -82,15 +82,17 @@ module.exports = {
       if (id > 0 || id < ticJson.movies.length) {
         ticJson.movies
           ?.sort((a, b) => (a.score > b.score ? -1 : 1))
-          .splice(id - 1, 1);
+          .splice(id, 1);
         fs.writeFileSync("../tic.json", JSON.stringify(ticJson));
       }
 
       embed.setDescription("**Movie removed from the queue**");
     } else if (sub_command === "vote") {
-      const movie = ticJson.movies?.at(id - 1);
+      const movie = ticJson.movies
+        ?.sort((a, b) => (a.score > b.score ? -1 : 1))
+        .at(id);
       if (movie) {
-        movie.score += vote ?? 1 > 0 ? 1 : -1;
+        movie.score += vote > 0 ? 1 : -1;
       }
 
       fs.writeFileSync("../tic.json", JSON.stringify(ticJson));
