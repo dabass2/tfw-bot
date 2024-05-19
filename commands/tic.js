@@ -69,15 +69,19 @@ module.exports = {
     if (sub_command === "list") {
       embed.setDescription("**TIC Movie Queue**");
     } else if (sub_command === "add") {
-      ticJson.movies.push({
-        name: movieName,
-        requestor: interaction.member.user.id,
-        dateAdded: new Date(),
-        score: 1,
-      });
+      if ((ticJson.movies.length ?? 0) >= 25) {
+        embed.setDescription("**Movie queue is full**");
+      } else {
+        ticJson.movies.push({
+          name: movieName,
+          requestor: interaction.member.user.id,
+          dateAdded: new Date(),
+          score: 1,
+        });
 
-      fs.writeFileSync("../tic.json", JSON.stringify(ticJson));
-      embed.setDescription(`"${movieName}" added to the queue`);
+        fs.writeFileSync("../tic.json", JSON.stringify(ticJson));
+        embed.setDescription(`"${movieName}" added to the queue`);
+      }
     } else if (sub_command === "rm") {
       if (id > 0 || id < ticJson.movies.length) {
         ticJson.movies
