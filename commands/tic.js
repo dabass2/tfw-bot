@@ -66,7 +66,9 @@ module.exports = {
     embed.setTimestamp(new Date());
     embed.setColor(0xb085d4);
 
+    let isEphemeral = true;
     if (sub_command === "list") {
+      isEphemeral = false;
       embed.setDescription("**TIC Movie Queue**");
     } else if (sub_command === "add") {
       if ((ticJson.movies.length ?? 0) >= 25) {
@@ -118,6 +120,7 @@ module.exports = {
 
     await interaction.reply({
       embeds: [embed],
+      ephemeral: isEphemeral,
     });
   },
 };
