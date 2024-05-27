@@ -1,7 +1,7 @@
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
 import { Command } from '../types/common';
-import * as rawCommands from './commands';
+import * as rawCommands from './commands/index.js';
 
 dotenv.config({ path: '../.env' });
 

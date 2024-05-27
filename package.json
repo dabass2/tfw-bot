@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint --max-warnings=0"
+    "lint": "eslint --max-warnings=0",
+    "build": "tsc",
+    "start": "rm -rf dist && tsc && cd dist && node index.js"
   },
   "keywords": [],
   "author": "",

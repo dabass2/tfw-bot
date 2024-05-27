@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 import { Command } from '../../types/common';
 
 export class NoahCommand implements Command {
-  public name: 'noah';
+  public name = 'noah';
 
   public async execute(interaction: ChatInputCommandInteraction) {
     const arg = interaction.options.getString('request');

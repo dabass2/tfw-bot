@@ -209,7 +209,7 @@ async function deleteMeme(replyInteraction: ChatInputCommandInteraction, meme_id
 }
 
 export class RmemeCommand implements Command {
-  public name: 'rmeme';
+  public name = 'rmeme';
 
   public async execute(interaction: ChatInputCommandInteraction) {
     const sub_command = interaction.options.getSubcommand();

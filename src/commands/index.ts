@@ -1,5 +1,7 @@
-export { GlugCommand } from './glugglug';
-export { NoahCommand } from './noah';
-export { PingCommand } from './ping';
-export { RmemeCommand } from './rmeme';
-export { TicCommand } from './tic';
+import { GlugCommand } from './glugglug.js';
+import { NoahCommand } from './noah.js';
+import { PingCommand } from './ping.js';
+import { RmemeCommand } from './rmeme.js';
+import { TicCommand } from './tic.js';
+
+export { GlugCommand, NoahCommand, PingCommand, RmemeCommand, TicCommand };

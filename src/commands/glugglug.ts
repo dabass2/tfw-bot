@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 import { Command } from '../../types/common';
 
 export class GlugCommand implements Command {
-  public name: 'glugglug';
+  public name = 'glugglug';
 
   public async execute(interaction: ChatInputCommandInteraction) {
     let msgEmbed = new EmbedBuilder();

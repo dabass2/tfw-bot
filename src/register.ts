@@ -2,7 +2,7 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
 import dotenv from 'dotenv';
-import * as slashCommands from './commands/slash_builders';
+import * as slashCommands from './commands/slash_builders/index.js';
 
 dotenv.config({ path: '../.env' });
 
