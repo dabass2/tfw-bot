@@ -1,11 +1,12 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 import fs from 'fs';
+import { Command } from '../../types/common';
 import { TicJson } from '../../types/tic';
-import { slashCommand } from './slashBuilders/tic';
 
-module.exports = {
-  data: slashCommand,
-  async execute(interaction: ChatInputCommandInteraction) {
+export class TicCommand implements Command {
+  public name: 'tic';
+
+  public async execute(interaction: ChatInputCommandInteraction) {
     const jsonString = String(fs.readFileSync('../tic.json'));
     const ticJson = JSON.parse(jsonString) as TicJson;
 
@@ -71,5 +72,5 @@ module.exports = {
       embeds: [embed],
       ephemeral: isEphemeral,
     });
-  },
-};
+  }
+}

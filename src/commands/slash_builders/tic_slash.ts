@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 
-export const slashCommand = new SlashCommandBuilder()
+export const tic_slash_command = new SlashCommandBuilder()
   .setName('tic')
   .setDescription('Inner circle best circle')
   .addSubcommandGroup(movies =>
