@@ -36,9 +36,21 @@ client.on('interactionCreate', async interaction => {
 
   const command = commandMap.get(interaction.commandName);
 
-  if (!command) return;
+  if (!command) {
+    await interaction.reply({
+      content: `Command "${interaction.commandName}" does not exist`,
+      ephemeral: true,
+    });
+    return;
+  }
 
-  if (command.allowList && !command.allowList.includes(Number(interaction.user.id))) return;
+  if (command.allowList?.length && !command.allowList.includes(interaction.user.id)) {
+    await interaction.reply({
+      content: 'You cannot use this command',
+      ephemeral: true,
+    });
+    return;
+  }
 
   try {
     await command.execute(interaction);
