@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction } from 'discord.js';
-import { Command } from '../../types/common';
+import { Command } from '../types/common';
 
 export class PingCommand implements Command {
   public name = 'ping';

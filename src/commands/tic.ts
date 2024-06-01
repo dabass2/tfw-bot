@@ -1,13 +1,13 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 import fs from 'fs';
-import { Command } from '../../types/common';
-import { TicJson } from '../../types/tic';
+import { Command } from '../types/common';
+import { TicJson } from '../types/tic';
 
 export class TicCommand implements Command {
   public name = 'tic';
 
   public async execute(interaction: ChatInputCommandInteraction) {
-    const jsonString = String(fs.readFileSync('../tic.json'));
+    const jsonString = String(fs.readFileSync('tic.json'));
     const ticJson = JSON.parse(jsonString) as TicJson;
 
     const sub_command = interaction.options.getSubcommand();

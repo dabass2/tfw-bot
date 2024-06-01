@@ -1,9 +1,9 @@
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
-import { Command } from '../types/common';
 import * as rawCommands from './commands/index.js';
+import { Command } from './types/common';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: 'src/.env' });
 
 const client = new Client({
   intents: [
@@ -28,7 +28,7 @@ botCommands.forEach(cmd => {
 
 client.on('ready', () => {
   console.log(`${client.user.username} is online`);
-  client.user.setActivity('Genshin Impact (Shamefully)');
+  client.user.setActivity('Valorant (Wife Hunting)');
 });
 
 client.on('interactionCreate', async interaction => {

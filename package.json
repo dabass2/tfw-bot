@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint --max-warnings=0",
     "build": "tsc",
-    "start": "rm -rf dist && tsc && cd dist && node index.js"
+    "serve": "node dist/index.js",
+    "dev": "nodemon --watch src -e ts --exec tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,9 @@
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "nodemon": "^3.1.2",
     "prettier": "^3.2.5",
+    "tsx": "^4.11.0",
     "typescript": "^5.4.5"
   }
 }
