@@ -1,4 +1,4 @@
-import { Command } from '../../types/common';
+import { Command } from '../types/common';
 
 import {
   ActionRowBuilder,
@@ -8,7 +8,7 @@ import {
   ComponentType,
   EmbedBuilder,
 } from 'discord.js';
-import { ApiFnArgs, MemeApiResponse } from '../../types/rmeme';
+import { ApiFnArgs, MemeApiResponse } from '../types/rmeme';
 
 const RMEME_API_URL = 'https://api.rmeme.me';
 

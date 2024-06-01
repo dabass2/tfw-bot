@@ -16,5 +16,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["dist", "node_modules", "tests"]
+  "exclude": ["dist", "node_modules", "tests"],
+  "watchOptions": {
+    "excludeDirectories": ["**/node_modules", "**/tests", "dist"]
+  }
 }

@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
-import { Command } from '../../types/common';
+import { Command } from '../types/common';
 
 export class NoahCommand implements Command {
   public name = 'noah';

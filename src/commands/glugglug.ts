@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
-import { Command } from '../../types/common';
+import { Command } from '../types/common';
 
 export class GlugCommand implements Command {
   public name = 'glugglug';
