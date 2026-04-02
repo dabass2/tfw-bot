@@ -7,7 +7,7 @@ type BagAlertResponse = {
 
 const bag_alert_api = 'https://alert.leinad.dev';
 
-export class BagAlert implements Command {
+export class BagAlertCommand implements Command {
   public name = 'bag';
 
   public async execute(interaction: ChatInputCommandInteraction) {

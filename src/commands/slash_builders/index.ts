@@ -1,4 +1,5 @@
-export { bag_slash_command } from './bag_alert.js';
+export { bag_slash_command } from './bag_slash.js';
+export { expert_slash_command } from './expert_slash.js';
 export { glug_slash_command } from './glugglug_slash.js';
 export { noah_slash_command } from './noah_slash.js';
 export { ping_slash_command } from './ping_slash.js';
