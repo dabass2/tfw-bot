@@ -18,8 +18,6 @@ RUN npm run build
 
 # Runtime env (override in docker-compose or docker run)
 ENV NODE_ENV=production
-ENV DISCORD_BOT_TOKEN=your-token-here
-ENV RMEME_API_KEY=key-here
 
 # Expose any port if needed (Discord bot uses outbound websocket, no inbound needed)
 # EXPOSE 3000
