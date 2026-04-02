@@ -4,7 +4,7 @@ import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord
 import dotenv from 'dotenv';
 import * as slashCommands from './commands/slash_builders/index.js';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: '.env' });
 
 const botCommands: (SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder)[] = [
   slashCommands.glug_slash_command,
@@ -12,13 +12,14 @@ const botCommands: (SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder)[] 
   slashCommands.ping_slash_command,
   slashCommands.rmeme_slash_command,
   slashCommands.tic_slash_command,
+  slashCommands.bag_slash_command,
 ];
 
 // Place your client and guild ids here
 
 const clientId = '500122158039826433';
-const guildId = '500122804520353799'; // dev
-// const guildId = '110419059232780288'; // prod
+// const guildId = '500122804520353799'; // dev
+const guildId = '110419059232780288'; // prod
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 

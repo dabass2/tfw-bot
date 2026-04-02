@@ -20,6 +20,7 @@ const botCommands: Command[] = [
   new rawCommands.PingCommand(),
   new rawCommands.RmemeCommand(),
   new rawCommands.TicCommand(),
+  new rawCommands.BagAlert(),
 ];
 
 botCommands.forEach(cmd => {
