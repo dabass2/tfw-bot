@@ -22,6 +22,7 @@ const botCommands: Command[] = [
   new rawCommands.TicCommand(),
   new rawCommands.BagAlertCommand(),
   new rawCommands.ExpertCommand(),
+  new rawCommands.PetCommand(),
 ];
 
 botCommands.forEach(cmd => {

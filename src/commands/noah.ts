@@ -5,11 +5,11 @@ export class NoahCommand implements Command {
   public name = 'noah';
 
   public async execute(interaction: ChatInputCommandInteraction) {
-    const arg = interaction.options.getString('request');
+    const feed_noah = interaction.options.getBoolean('request');
 
     const msgEmbed = new EmbedBuilder();
 
-    if (arg === 'request') {
+    if (feed_noah) {
       const msg_embed = new EmbedBuilder()
         .setColor('#D2691E')
         .setDescription('A simple request...')

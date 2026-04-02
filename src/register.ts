@@ -1,12 +1,11 @@
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
 import dotenv from 'dotenv';
 import * as slashCommands from './commands/slash_builders/index.js';
 
 dotenv.config({ path: '.env' });
 
-const botCommands: (SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder)[] = [
+const botCommands = [
   slashCommands.glug_slash_command,
   slashCommands.noah_slash_command,
   slashCommands.ping_slash_command,
@@ -14,13 +13,14 @@ const botCommands: (SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder)[] 
   slashCommands.tic_slash_command,
   slashCommands.bag_slash_command,
   slashCommands.expert_slash_command,
+  slashCommands.pet_slash_command,
 ];
 
 // Place your client and guild ids here
 
 const clientId = '500122158039826433';
-const guildId = '500122804520353799'; // dev
-// const guildId = '110419059232780288'; // prod
+// const guildId = '500122804520353799'; // dev
+const guildId = '110419059232780288'; // prod
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
