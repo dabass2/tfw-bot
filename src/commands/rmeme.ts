@@ -86,8 +86,10 @@ async function getMeme(replyInteraction: ChatInputCommandInteraction, meme_id: n
   collector.on('end', async () => {
     console.log('Collected score: ' + totalScore);
     if (totalScore == 0) {
-      voteMeme(replyInteraction, meme_id, totalScore);
+      return;
     }
+
+    voteMeme(replyInteraction, meme_id, totalScore, true);
 
     const updatedDesc = `Meme: #${api_response.meme_id} | ${
       totalScore !== 0 ? 'Updated ' : ''
@@ -109,7 +111,7 @@ async function getMeme(replyInteraction: ChatInputCommandInteraction, meme_id: n
             components: [] as ActionRowBuilder<ButtonBuilder>[],
           };
 
-    await replyInteraction.followUp(interaction_body);
+    await replyInteraction.editReply(interaction_body);
   });
 }
 
@@ -150,7 +152,8 @@ async function uploadMeme(replyInteraction: ChatInputCommandInteraction, upload_
 async function voteMeme(
   replyInteraction: ChatInputCommandInteraction,
   meme_id: number,
-  inpt_votes: number
+  inpt_votes: number,
+  skip_reply: boolean = false
 ) {
   console.log(`Voting on meme ${meme_id} with votes ${inpt_votes}`);
   if (!meme_id) return;
@@ -166,8 +169,9 @@ async function voteMeme(
 
   console.log(api_response);
   if (!api_response) {
-    await replyInteraction.followUp({
+    await replyInteraction.reply({
       content: api_response.message,
+      ephemeral: true,
     });
     return;
   }
@@ -176,7 +180,9 @@ async function voteMeme(
     .setDescription(`${api_response.message} | New Score ${api_response.score}`)
     .setTimestamp(new Date());
 
-  await replyInteraction.followUp({ embeds: [meme_embed] });
+  if (!skip_reply) {
+    await replyInteraction.reply({ embeds: [meme_embed], ephemeral: true });
+  }
 }
 
 async function deleteMeme(replyInteraction: ChatInputCommandInteraction, meme_id: number) {
