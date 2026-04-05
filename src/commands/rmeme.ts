@@ -109,7 +109,7 @@ async function getMeme(replyInteraction: ChatInputCommandInteraction, meme_id: n
             components: [] as ActionRowBuilder<ButtonBuilder>[],
           };
 
-    await replyInteraction.editReply(interaction_body);
+    await replyInteraction.followUp(interaction_body);
   });
 }
 
@@ -166,7 +166,7 @@ async function voteMeme(
 
   console.log(api_response);
   if (!api_response) {
-    await replyInteraction.reply({
+    await replyInteraction.followUp({
       content: api_response.message,
     });
     return;
@@ -176,7 +176,7 @@ async function voteMeme(
     .setDescription(`${api_response.message} | New Score ${api_response.score}`)
     .setTimestamp(new Date());
 
-  await replyInteraction.reply({ embeds: [meme_embed], ephemeral: true });
+  await replyInteraction.followUp({ embeds: [meme_embed] });
 }
 
 async function deleteMeme(replyInteraction: ChatInputCommandInteraction, meme_id: number) {
